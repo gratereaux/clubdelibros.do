@@ -52,13 +52,11 @@ class AuthController extends Controller
      */
     protected function register(UserRequest $request)
     {
-        //dd($request->all());
-
         //Validacion de passowrd en el UserRequest no quiere confirmar 
         // solucion momentanea alterna para evitar este error
         // necesita refactorizacion
         if ($request->password != $request->password_confirmation){
-            Flash::error("Password dosnt match!");
+            Flash::error("Password do not match!");
             return redirect('register');
         }
         
