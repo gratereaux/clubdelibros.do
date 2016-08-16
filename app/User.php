@@ -54,12 +54,17 @@ class User extends Authenticatable
 
 
     /**
-     * Verify if the user have admin roles
-     * where ID '1' means is admin.
+     * Verify if the user have registered roles (admin, registered, moderator)
+     * where ID '1' means is regular user, '2' admin and '3' moderator.
     */
     public function isAdministrator()
     {
-        if(\Auth::user()->user_role_id == 1){ return true; }
+        if(\Auth::user()->user_role_id == 2){ return true; }
+        return false;
+    }
+    public function isModerator()
+    {
+        if(\Auth::user()->user_role_id == 3){ return true; }
         return false;
     }
 

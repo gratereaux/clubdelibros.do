@@ -62,7 +62,7 @@ class AuthController extends Controller
         
         $third = Third::create([
             'name' => $request['name'],
-            //'other stuff to add' => Right here,  
+            //'other stuff to add' => Right here,
         ]);
 
         $newUser = User::create([

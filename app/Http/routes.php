@@ -1,14 +1,9 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
-| Application Routes
+| Club de Libros
 |--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
+| Rutas de acceso
 */
 
 Route::get('/', function () {
@@ -18,3 +13,13 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', ['uses' => 'HomeController@index', 'as' => 'HomeController.index']);
+
+//Related to user activities
+Route::group(['prefix' => 'user', 'middleware' => ['auth']], function (){
+	Route::get('profile', ['uses' => 'UserController@profile', 'as' => 'UserController.profile']);
+});
+
+//Related to admin interface
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin']], function () {
+	//admin pages
+});
