@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Third;
+use App\UserDetail;
 
 use Validator;
 use App\Http\Controllers\Controller;
@@ -62,19 +63,24 @@ class AuthController extends Controller
         
         $third = Third::create([
             'name' => $request['name'],
-            //'other stuff to add' => Right here,
         ]);
+
+        $newUserDetail = new UserDetail();
+        $newUserDetail->third_id = $third->id;
+        $newUserDetail->save();
 
         $newUser = User::create([
             'email' => $request['email'],
             'password' => bcrypt($request['password']),
             'third_id' => $third->id,
-            'user_role_id' => 1, // ID 1 = regular user // ID 2 = Administrator // ID 3 = Moderator 
+            'user_role_id' => 1, // ID 1 = regular user // ID 2 = Moderator // ID 3 = Administrator
             'status_id' => 1, //Normal status for the begining
             'verified' => 0, //not verified by default
         ]);
 
-        Flash::success("El usuario ". $newUser->third->name ." ha sido registrado. Puede hacer login y luego validar sus datos");
+
+
+        flash("El usuario ". $request['name'] ." ha sido registrado. Puede hacer login y luego validar sus datos");
         return redirect('login');
     }
 }

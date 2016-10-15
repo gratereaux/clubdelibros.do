@@ -36,6 +36,7 @@ return [
             'publisher'         => 'core' . $table_separator . 'publisher',
             'author'            => 'core' . $table_separator . 'author',
             'users'             => 'core' . $table_separator . 'users',
+            'usersdetails'      => 'core' . $table_separator . 'usersdetails',
         ],
         'library' => [
             'books'             => 'library' . $table_separator . 'book',

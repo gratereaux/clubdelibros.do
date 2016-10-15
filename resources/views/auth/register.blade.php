@@ -14,7 +14,7 @@
                             <label for="name" class="col-md-4 control-label">Name</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                <input id="name" type="text" class="form-control" name="name" value="{{ session()->has('data') ? session('data')->name : old('name') }}" {{ session()->has('data') ? 'disabled' : '' }}>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -28,7 +28,7 @@
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ session()->has('data') ? session('data')->email : old('email') }}" {{ session()->has('data') ? 'disabled' : '' }}>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">

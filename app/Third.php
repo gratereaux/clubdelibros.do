@@ -13,7 +13,7 @@ class Third extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
+        'third_id', 'ebook', 'publisher_id', 'published', 'description',
     ];
 
 
@@ -25,5 +25,20 @@ class Third extends Model
         return $this->belongsTo('\App\User');
     }
 
+    public function book(){
+        return $this->belongsTo('\App\Book');
+    }
 
+    public function phone(){
+        return $this->hasMany('\App\Phone', 'third_id');
+    }
+
+    public function publisher(){
+        return $this->belongsTo('\App\BookPublisher');
+    }
+
+    public function author(){
+        return $this->belongsTo('\App\Author');
+    }
+    
 }

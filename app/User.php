@@ -23,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'verified',
+        'password', 'remember_token',
     ];
 
     /****************************/
@@ -31,7 +31,7 @@ class User extends Authenticatable
     /****************************/
 
     public function third(){
-        return $this->hasOne('\App\Third', 'id');
+        return $this->hasOne('\App\Third', 'id', 'third_id');
     }
     public function role(){
         return $this->hasOne('\App\User_role', 'id');
@@ -39,6 +39,15 @@ class User extends Authenticatable
     public function status(){
         return $this->hasOne('\App\Status', 'id');
     }
+
+    public function detail(){
+        return $this->hasOne('\App\UserDetail', 'third_id', 'third_id');
+    }
+
+    public function bookowner(){
+        return $this->hasMany('\App\BookOwner', 'user_id');
+    }
+
 
     //Faltan otras relaciones con respecto a los libros
     // ...
@@ -67,6 +76,5 @@ class User extends Authenticatable
         if(\Auth::user()->user_role_id == 3){ return true; }
         return false;
     }
-
 
 }

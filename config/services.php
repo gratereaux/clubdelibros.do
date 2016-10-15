@@ -35,4 +35,15 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+        'client_id' => '903065896464239',
+        'client_secret' => '1780328f379fddac10ffae49f498090e',
+        'redirect' => 'http://clubdelibros.dev:8000/social/callback/facebook',
+    ],
+
+    'google' => [
+        'client_id' => '455043687742-2uho33bpa8petkolr74ndcduplpc0t1s.apps.googleusercontent.com',
+        'client_secret' => 'YVdQAPbe0Ol3mjEsdVGa0EiH',
+        'redirect' => 'http://clubdelibros.dev:8000/social/callback/google',
+    ],
 ];
